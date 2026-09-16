@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,17 +29,28 @@ class AccountsScreen extends StatefulWidget {
 
 class _AccountsScreenState extends State<AccountsScreen> {
   final _searchController = TextEditingController();
-  late final Stream<List<Account>> _stream;
+  final List<Account> _accounts = [];
+  StreamSubscription<List<Account>>? _sub;
+  bool _loading = true;
   String _query = '';
 
   @override
   void initState() {
     super.initState();
-    _stream = Vault.instance.watchAccounts();
+    _sub = Vault.instance.watchAccounts().listen((data) {
+      if (!mounted) return;
+      setState(() {
+        _accounts
+          ..clear()
+          ..addAll(data);
+        _loading = false;
+      });
+    });
   }
 
   @override
   void dispose() {
+    _sub?.cancel();
     _searchController.dispose();
     super.dispose();
   }
@@ -462,6 +475,74 @@ class _AccountsScreenState extends State<AccountsScreen> {
     );
   }
 
+  Future<void> _onReorderItem(int oldIndex, int newIndex) async {
+    final list = [..._accounts];
+    final moved = list.removeAt(oldIndex);
+    list.insert(newIndex, moved);
+    setState(() {
+      _accounts
+        ..clear()
+        ..addAll(list);
+    });
+    await syncController.track(() => Vault.instance.saveOrder(list));
+  }
+
+  Widget _cardFor(Account a, int i) => AccountCard(
+        account: a,
+        color: AppTheme.avatarColors[i % AppTheme.avatarColors.length],
+        onTap: () => _openForm(existing: a),
+        onCopy: () => _copy(a.password),
+        onDelete: () => _delete(a),
+      );
+
+  Widget _buildBody() {
+    if (_loading) return const Center(child: CircularProgressIndicator());
+    if (_accounts.isEmpty) return const _EmptyState();
+
+    final searching = _query.trim().isNotEmpty;
+    final items = _filter(_accounts);
+
+    return Column(
+      children: [
+        _SearchField(
+          controller: _searchController,
+          onChanged: (v) => setState(() => _query = v),
+          onClear: () => setState(() {
+            _searchController.clear();
+            _query = '';
+          }),
+        ),
+        Expanded(
+          child: items.isEmpty
+              ? _NoResults(query: _query)
+              : searching
+                  ? ListView.separated(
+                      padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
+                      itemCount: items.length,
+                      separatorBuilder: (_, _) => const SizedBox(height: 12),
+                      itemBuilder: (_, i) => _cardFor(items[i], i),
+                    )
+                  : ReorderableListView.builder(
+                      padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
+                      itemCount: items.length,
+                      onReorderItem: _onReorderItem,
+                      buildDefaultDragHandles: false,
+                      proxyDecorator: (child, index, animation) =>
+                          Material(color: Colors.transparent, child: child),
+                      itemBuilder: (_, i) => ReorderableDelayedDragStartListener(
+                        key: ValueKey(items[i].id),
+                        index: i,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: _cardFor(items[i], i),
+                        ),
+                      ),
+                    ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context);
@@ -476,51 +557,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
       body: Column(
         children: [
           const SyncBanner(),
-          Expanded(
-            child: StreamBuilder<List<Account>>(
-              stream: _stream,
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                final all = snapshot.data!;
-                if (all.isEmpty) return const _EmptyState();
-
-                final items = _filter(all);
-                return Column(
-                  children: [
-                    _SearchField(
-                      controller: _searchController,
-                      onChanged: (v) => setState(() => _query = v),
-                      onClear: () => setState(() {
-                        _searchController.clear();
-                        _query = '';
-                      }),
-                    ),
-                    Expanded(
-                      child: items.isEmpty
-                          ? _NoResults(query: _query)
-                          : ListView.separated(
-                              padding:
-                                  const EdgeInsets.fromLTRB(16, 4, 16, 96),
-                              itemCount: items.length,
-                              separatorBuilder: (_, _) =>
-                                  const SizedBox(height: 12),
-                              itemBuilder: (_, i) => AccountCard(
-                                account: items[i],
-                                color: AppTheme.avatarColors[
-                                    i % AppTheme.avatarColors.length],
-                                onTap: () => _openForm(existing: items[i]),
-                                onCopy: () => _copy(items[i].password),
-                                onDelete: () => _delete(items[i]),
-                              ),
-                            ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
+          Expanded(child: _buildBody()),
         ],
       ),
     );

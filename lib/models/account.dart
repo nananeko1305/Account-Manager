@@ -1,7 +1,7 @@
-/// Account je jedan sačuvan nalog u našem menadžeru.
+/// Account je jedan sačuvan nalog.
 ///
-/// [useEmail] kaže da li [identifier] predstavlja email (true) ili
-/// korisničko ime (false). [website] je opciono — koristi se za ikonicu.
+/// [order] određuje redosled u listi (manji = više gore). Korisnik ga menja
+/// prevlačenjem kartica. [website] je opciono — za ikonicu servisa.
 class Account {
   Account({
     required this.id,
@@ -10,6 +10,7 @@ class Account {
     required this.identifier,
     required this.password,
     this.website = '',
+    this.order = 0,
   });
 
   final String id;
@@ -18,6 +19,7 @@ class Account {
   final String identifier;
   final String password;
   final String website;
+  final double order;
 
   Account copyWith({
     String? accountName,
@@ -25,6 +27,7 @@ class Account {
     String? identifier,
     String? password,
     String? website,
+    double? order,
   }) {
     return Account(
       id: id,
@@ -33,6 +36,7 @@ class Account {
       identifier: identifier ?? this.identifier,
       password: password ?? this.password,
       website: website ?? this.website,
+      order: order ?? this.order,
     );
   }
 
@@ -43,6 +47,7 @@ class Account {
         'identifier': identifier,
         'password': password,
         'website': website,
+        'order': order,
       };
 
   factory Account.fromJson(Map<String, dynamic> json) => Account(
@@ -52,5 +57,6 @@ class Account {
         identifier: json['identifier'] as String,
         password: json['password'] as String,
         website: (json['website'] as String?) ?? '',
+        order: (json['order'] as num?)?.toDouble() ?? 0,
       );
 }

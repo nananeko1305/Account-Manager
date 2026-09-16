@@ -55,6 +55,8 @@ class _AccountFormScreenState extends State<AccountFormScreen> {
       identifier: _identifierController.text.trim(),
       password: _passwordController.text,
       website: _websiteController.text.trim(),
+      order: existing?.order ??
+          DateTime.now().millisecondsSinceEpoch.toDouble(),
     );
     Navigator.of(context).pop(account);
   }

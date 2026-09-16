@@ -80,8 +80,10 @@ class Vault {
           .map((d) => _decryptAccount(d.data()))
           .whereType<Account>()
           .toList();
-      list.sort((a, b) =>
-          a.accountName.toLowerCase().compareTo(b.accountName.toLowerCase()));
+      list.sort((a, b) {
+        final c = a.order.compareTo(b.order);
+        return c != 0 ? c : a.id.compareTo(b.id);
+      });
       return list;
     });
   }
@@ -108,6 +110,15 @@ class Vault {
   Future<void> forceSync() async {
     await FirebaseFirestore.instance.waitForPendingWrites();
     await _accountsCol.get(const GetOptions(source: Source.server));
+  }
+
+  /// Snima novi redosled: postavi order = pozicija za naloge kojima se promenio.
+  Future<void> saveOrder(List<Account> ordered) async {
+    for (var i = 0; i < ordered.length; i++) {
+      if (ordered[i].order != i.toDouble()) {
+        await upsertAccount(ordered[i].copyWith(order: i.toDouble()));
+      }
+    }
   }
 
   Account? _decryptAccount(Map<String, dynamic> data) {
