@@ -1,0 +1,105 @@
+{
+  "@@locale": "en",
+  "appTagline": "Your cozy vault for accounts",
+  "setupTitle": "Welcome! 👋",
+  "setupSubtitle": "Set a master password to unlock the app.\nRemember it well — without it your data cannot be read.",
+  "masterPassword": "Master password",
+  "confirmPassword": "Confirm password",
+  "minChars4": "At least 4 characters",
+  "passwordsNoMatch": "Passwords do not match",
+  "saving": "Saving...",
+  "saveAndEnter": "Save and enter",
+  "unlockTitle": "Welcome back",
+  "unlockSubtitle": "Enter your master password to unlock the vault.",
+  "wrongPassword": "Wrong password",
+  "checking": "Checking...",
+  "enter": "Enter",
+  "loginTitle": "Sign in",
+  "registerTitle": "Create account",
+  "loginSubtitle": "Sign in to see your vault on all devices.",
+  "registerSubtitle": "Register so your vault is available everywhere.",
+  "email": "Email",
+  "accountPassword": "Account password",
+  "minChars6": "At least 6 characters",
+  "invalidEmail": "Enter a valid email",
+  "wait": "Please wait...",
+  "signIn": "Sign in",
+  "register": "Register",
+  "toRegister": "No account? Register",
+  "toLogin": "Already have an account? Sign in",
+  "errInvalidEmail": "The email is not valid.",
+  "errEmailInUse": "An account with this email already exists.",
+  "errWeakPassword": "Password is too weak (min. 6 characters).",
+  "errWrongCredentials": "Wrong email or password.",
+  "errNoNetwork": "No internet connection.",
+  "errGeneric": "Something went wrong. Please try again.",
+  "errWithCode": "Error: {code}",
+  "@errWithCode": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "myAccounts": "My accounts",
+  "theme": "Theme",
+  "language": "Language",
+  "lock": "Lock",
+  "logout": "Sign out",
+  "newAccount": "New account",
+  "searchHint": "Search accounts...",
+  "clearSearch": "Clear search",
+  "noResults": "No results for \"{query}\"",
+  "@noResults": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "emptyTitle": "No accounts yet",
+  "emptySubtitle": "Add your first one with the \"New account\" button",
+  "deleteTitle": "Delete account?",
+  "deleteMessage": "Are you sure you want to delete \"{name}\"?",
+  "@deleteMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "passwordCopied": "Password copied ✓",
+  "chooseColor": "Choose app color",
+  "chooseLanguage": "Choose language",
+  "editAccount": "Edit account",
+  "accountName": "Account name",
+  "accountNameHint": "e.g. Gmail, Instagram, Steam...",
+  "required": "Required field",
+  "usingEmail": "Using email",
+  "usingUsername": "Using username",
+  "switchToUsername": "Switch to username",
+  "switchToEmail": "Switch to email",
+  "username": "Username",
+  "password": "Password",
+  "showHide": "Show/hide",
+  "copyPassword": "Copy password",
+  "saveChanges": "Save changes",
+  "addAccount": "Add account",
+  "paletteTopla": "Warm",
+  "palettePlava": "Blue",
+  "paletteCrvena": "Red",
+  "paletteZelena": "Green",
+  "paletteZuta": "Yellow",
+  "paletteLjubicasta": "Purple",
+  "syncing": "Syncing...",
+  "synced": "Synced ✓",
+  "syncNow": "Sync now",
+  "deleteWarning": "This action can't be undone.",
+  "appearance": "Appearance",
+  "light": "Light",
+  "dark": "Dark",
+  "website": "Website (optional)",
+  "websiteHint": "e.g. instagram.com"
+}

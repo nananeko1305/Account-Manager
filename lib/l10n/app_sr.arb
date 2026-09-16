@@ -1,0 +1,105 @@
+{
+  "@@locale": "sr",
+  "appTagline": "Tvoj topli sef za naloge",
+  "setupTitle": "Dobrodošao! 👋",
+  "setupSubtitle": "Postavi master lozinku kojom ćeš otključavati sef.\nZapamti je dobro — bez nje se podaci ne mogu pročitati.",
+  "masterPassword": "Master lozinka",
+  "confirmPassword": "Potvrdi lozinku",
+  "minChars4": "Najmanje 4 znaka",
+  "passwordsNoMatch": "Lozinke se ne poklapaju",
+  "saving": "Čuvam...",
+  "saveAndEnter": "Sačuvaj i uđi",
+  "unlockTitle": "Dobrodošao nazad",
+  "unlockSubtitle": "Unesi master lozinku da otključaš sef.",
+  "wrongPassword": "Pogrešna lozinka",
+  "checking": "Proveravam...",
+  "enter": "Uđi",
+  "loginTitle": "Prijava",
+  "registerTitle": "Napravi nalog",
+  "loginSubtitle": "Prijavi se da vidiš svoj sef na svim uređajima.",
+  "registerSubtitle": "Registruj se da bi sef bio dostupan svuda.",
+  "email": "Email",
+  "accountPassword": "Lozinka naloga",
+  "minChars6": "Najmanje 6 znakova",
+  "invalidEmail": "Unesi ispravan email",
+  "wait": "Sačekaj...",
+  "signIn": "Prijavi se",
+  "register": "Registruj se",
+  "toRegister": "Nemaš nalog? Registruj se",
+  "toLogin": "Već imaš nalog? Prijavi se",
+  "errInvalidEmail": "Email nije ispravan.",
+  "errEmailInUse": "Nalog sa ovim email-om već postoji.",
+  "errWeakPassword": "Lozinka je preslaba (min. 6 znakova).",
+  "errWrongCredentials": "Pogrešan email ili lozinka.",
+  "errNoNetwork": "Nema veze sa internetom.",
+  "errGeneric": "Nešto nije u redu. Pokušaj ponovo.",
+  "errWithCode": "Greška: {code}",
+  "@errWithCode": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "myAccounts": "Moji nalozi",
+  "theme": "Tema",
+  "language": "Jezik",
+  "lock": "Zaključaj",
+  "logout": "Odjavi se",
+  "newAccount": "Novi nalog",
+  "searchHint": "Pretraži naloge...",
+  "clearSearch": "Obriši pretragu",
+  "noResults": "Nema rezultata za „{query}”",
+  "@noResults": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "emptyTitle": "Još nemaš nijedan nalog",
+  "emptySubtitle": "Dodaj prvi dugmetom „Novi nalog”",
+  "deleteTitle": "Obriši nalog?",
+  "deleteMessage": "Sigurno želiš da obrišeš „{name}”?",
+  "@deleteMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "Otkaži",
+  "delete": "Obriši",
+  "passwordCopied": "Lozinka kopirana ✓",
+  "chooseColor": "Izaberi boju aplikacije",
+  "chooseLanguage": "Izaberi jezik",
+  "editAccount": "Izmeni nalog",
+  "accountName": "Naziv naloga",
+  "accountNameHint": "npr. Gmail, Instagram, Steam...",
+  "required": "Obavezno polje",
+  "usingEmail": "Koristim email",
+  "usingUsername": "Koristim korisničko ime",
+  "switchToUsername": "Prebaci za korisničko ime",
+  "switchToEmail": "Prebaci za email",
+  "username": "Korisničko ime",
+  "password": "Lozinka",
+  "showHide": "Prikaži/sakrij",
+  "copyPassword": "Kopiraj lozinku",
+  "saveChanges": "Sačuvaj izmene",
+  "addAccount": "Dodaj nalog",
+  "paletteTopla": "Topla",
+  "palettePlava": "Plava",
+  "paletteCrvena": "Crvena",
+  "paletteZelena": "Zelena",
+  "paletteZuta": "Žuta",
+  "paletteLjubicasta": "Ljubičasta",
+  "syncing": "Sinhronizujem...",
+  "synced": "Sinhronizovano ✓",
+  "syncNow": "Sinhronizuj sada",
+  "deleteWarning": "Ova radnja ne može da se poništi.",
+  "appearance": "Izgled",
+  "light": "Svetla",
+  "dark": "Tamna",
+  "website": "Sajt (opciono)",
+  "websiteHint": "npr. instagram.com"
+}

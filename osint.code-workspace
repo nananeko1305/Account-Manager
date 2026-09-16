@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "../../../../projects/1681377694/osint"
+		},
+		{
+			"path": "../../../../projects/1681377694/front"
+		},
+		{
+			"path": "../../../../projects/1681377694/back"
+		},
+		{
+			"path": "../../../../projects/1681377694/front-ui-fix"
+		},
+		{
+			"path": "../../../../projects/1681377694/front-package-update"
+		},
+		{
+			"path": "../../../../projects/1681377694/front-chore-runtime"
+		},
+		{
+			"path": "../../../../projects/1681377694/front-tutorials"
+		},
+		{
+			"path": "../../../../projects/1681377694/back-tutorials"
+		},
+		{
+			"path": "../../../../projects/1681377694/mobile-checker"
+		},
+		{
+			"path": "../../../../projects/1681377694/front-firefox-esr"
+		}
+	],
+	"settings": {}
+}
